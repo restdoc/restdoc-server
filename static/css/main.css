@@ -1,0 +1,1186 @@
+@charset "utf-8";
+
+/**
+ * main.css
+ *
+ * @author 
+ * @version 2017/12/02
+ */
+
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: local("Material Icons"), local("MaterialIcons-Regular"),
+    url("https://fonts.gstatic.com/s/materialicons/v121/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2") format('woff2'),
+    url("/mail/zh-hans/assets/fonts/MaterialIcons-Regular.woff2") format("woff2"),
+    url("/assets/fonts/MaterialIcons-Regular.woff2") format("woff2");
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+html,body{margin:0; padding:0; }
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#app {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+svg:hover {
+  fill: #3273dc;
+}
+
+@media screen and (max-width: 760px){
+
+    
+    .login-card {
+        min-width: 260px;
+        max-width: 400px;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .resetpassword-card {
+        min-width: 400px;
+        max-width: 500px;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .signup-card {
+        margin: 0 auto;
+        min-width: 200px;
+        max-width: 700px;
+        width: 80%;
+    }
+
+    .field-label {
+        margin-right: 0;
+    }
+
+    .field-label .label {
+        margin: 0;
+    }
+
+    .field-body .field {
+	    margin: 0;
+    }
+
+    .geetest_holder.geetest_wind {
+        position: relative;
+        width: 100%;
+        padding: 0;
+        min-width: 200px !important;
+        height: 44px;
+    }
+
+    #embed-captcha-personal div {
+        max-width: 200px !important;
+    }
+
+    #embed-captcha-enterprise div {
+        max-width: 200px !important;
+    }
+
+
+    .login-extra {
+        margin: 1em auto !important;
+    }
+
+    .field-body .field {
+        font-size: 14px;
+    }
+
+    .signup-form .term-checkbox {
+        margin-left: 0 !important;
+    }
+
+    .login-link {
+        margin: 1em 0 1em 0;
+    }
+}
+
+
+
+@media screen and (min-width: 760px){
+
+   
+    .login-card {
+        width: 600px;
+        min-width: 500px;
+        margin: 0 auto;
+    }
+
+    .resetpassword-card {
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    .signup-card {
+        width: 600px;
+        margin: 0 auto ;
+    }
+
+    .field-label {
+        margin-right: 0;
+    }
+
+    .field-body .field {
+        margin: 0 1em 0 1em;
+    }
+
+    .geetest_holder.geetest_wind {
+        position: relative;
+        width: 100%;
+        padding: 0 1em 0 1em;
+        min-width: 260px;
+        height: 44px;
+    }
+
+}
+
+@media screen and (max-width: 1088px) {
+
+    .navbar-end {
+        display: none;
+    }
+
+    .container {
+	    width: 80%;
+	}
+}
+
+
+@media screen and (max-width: 1087px) {
+    a.logo {
+        padding: 0 !important;
+        margin-left: 10px;
+    }
+
+    .bd-content {
+        display: none;
+    }
+
+    .bd-link-subtitle {
+        display: none;
+    }
+
+    .feature.inbox {
+        display: none;
+    }
+
+    .feature-desc {
+        display: none;
+    }
+
+    .more-features {
+        display: none;
+    }
+
+    .erweima {
+        display: none;
+    }
+
+    .footer .right {
+        text-align: center !important;
+    }
+
+
+    .signup-card .control.has-icons-left  {
+        padding: 0em !important;
+    }
+
+
+
+/*
+    .columns.home .column .feature {
+        padding: 0;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    */
+}
+
+
+div#home-main {
+    min-height: 50px !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    cursor: cursor;
+    color: #3273dc;
+}
+
+.logo h2 {
+    margin: 30px auto 15px auto;
+    width: 6em;
+    text-align: center;
+    font-size: 3em;
+    color: #6699ff;
+}
+
+.footer {
+    text-align: center;
+}
+
+#logo {
+    margin: 0 auto;
+    padding: 0;
+}
+#logo p {
+    margin: 0.5em 0 0.5em 0;
+}
+
+span {
+    height:15px;
+    width:20px;
+    position:relative;
+}
+
+a[href^="http:"]{
+    background-image: url(/static/images/external.png) no-repeat right top;
+    padding-right:10px;
+}
+
+a[href^="/"]{
+    background-image: url(/static/images/external.png) no-repeat right top;
+    padding-right:10px;
+}
+
+a[href^="/"]{
+    background-image: url(/static/images/external.png) no-repeat right top;
+    padding-right:10px;
+}
+
+#main {
+    width: 100%;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+}
+
+
+.nav-item div {
+    display: flex;
+    align-items: center;
+}
+
+.nav-item div span {
+    padding: 0 0 0 2px;
+    white-space: nowrap;
+}
+
+.navbar-link:not(.is-arrowless)::after {
+    right: -1em !important; 
+}
+
+.products {
+    display: flex;
+    align-items: center;
+}
+
+.products img {
+    display: flex;
+    align-items: center;
+    margin: 0 2px 0 0;
+    width: 24px;
+    height: 24px;
+}
+
+/*然后再对自己的域名豁免*/
+a[href^="http://hedwi.com"],
+a[href^="http://www.hedwi.com"]{
+    background-image: none;
+    padding right: 0;
+}
+
+a.blank[href^="/"]{
+    background-image: url(/static/images/external.png) no-repeat right top;
+    padding:0 0.2em 0 0.2em;
+}
+
+[v-cloak] {
+  display: none !important;
+}
+
+.warning {
+    color: red;
+    display: inline;
+}
+
+.footer {
+    width: 100%;
+    height: 80px;
+    background-color: #F5F6FA;
+    margin: 0;
+    padding: 1.2em 0 1.2em 0 !important;
+    vertical-align: middle;
+}
+
+.footer .right {
+    text-align: right;
+}
+
+.footer .left {
+    text-align: left;
+}
+
+.footer .column {
+    padding: 0.75rem 0 0.75rem 0;
+}
+
+.footer .container .columns {
+    margin: 0;
+}
+
+.footer span.phone {
+    font-size: 18px;
+}
+
+.footer span i.phone {
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: -2px;
+    right: 5px;
+}
+
+.footer ul li {
+    display: inline;
+    margin: 0 0 0 0.6em;
+}
+
+
+.section {
+    padding: 0;
+}
+
+section.odd {
+	background-color: #F5F6FA;
+}
+
+section.even {
+	background-color: #FFFFFF;
+}
+
+section .container  {
+    align-items: center;
+}
+
+
+.table.dns {
+    word-break: break-all;
+    word-wrap: break-all;
+    user-select: none;
+}
+
+.table.dns td {
+    vertical-align: middle;
+    user-select: text;
+}
+
+.table.dns .record-status {
+    width: 5%; 
+}
+
+.table.dns .record-name {
+    width: 10%; 
+}
+
+.table.dns .record-type {
+    width: 10%;
+}
+
+.table.dns .name {
+    width: 16%; 
+    user-select: text;
+}
+
+.table.dns .copy {
+    width: 5%;
+}
+
+.table.dns .expect-record {
+    width: 27%;
+    font-size: 1em;
+    user-select: text;
+}
+
+.table.dns .current-record {
+    width: 27%;
+    user-select: text;
+}
+
+.table.dns .expect-record textarea {
+    border: 0;
+    width: 100%;
+    resize:none;
+    vertical-align: middle;
+    font-size: 1em;
+}
+
+.table.dns .spf textarea {
+    line-height: 2em;
+    height: 2em;
+}
+
+.table.dns .mx textarea {
+    line-height: 2em;
+    height: 2em;
+}
+
+
+.table.dns .current-record textarea {
+    border: 0;
+    color: #999;
+    width: 100%;
+    resize:none;
+    vertical-align: middle;
+    font-size: 1em;
+}
+
+.table.dns textarea:focus
+{
+    outline: none;/*去掉默认input焦点边框*/
+    background-color: white;
+}
+
+.login-card {
+
+    padding: 2em 1em 1.5em 1em;
+    margin-bottom: 2em;
+    margin-top: 1em;
+}
+
+a.navbar-item:hover {
+    text-decoration: none;
+}
+
+table#domainlist {
+    margin: 1em 0 0 0;
+}
+table#domainlist td {
+    vertical-align: middle;
+}
+
+table#domainlist td.name {
+    width: 50%;
+}
+
+table#domainlist td.type {
+    width: 10%;
+}
+
+table#domainlist td.status {
+    width: 10%;
+}
+
+table#domainlist td.action {
+    width: 30%;
+
+}
+
+
+table#licenselist {
+    margin: 1em 0 0 0;
+}
+table#licenselist td {
+    vertical-align: middle;
+}
+
+table#licenselist td.name {
+    width: 50%;
+}
+
+table#licenselist td.license {
+    width: 20%;
+}
+
+table#licenselist td.action {
+    width: 20%;
+}
+
+table#memberlist {
+    margin: 1em 0 0 0;
+}
+
+section.domain-detail {
+    padding: 0;
+}
+
+#check {
+    padding: 0;
+}
+.container table {
+    padding: 0;
+}
+
+.container div.card.domainDetail {
+    padding: 1em 3em 1em 1em;
+    margin: 1em 0 0 0;
+}
+
+.container div.card.domainDetail div.container {
+    padding: 1em 3em 1em 1em;
+}
+
+
+.copyButton {
+    background-color: #fff;
+    border-color: #dbdbdb;
+    border-width: 1px;
+    color: #363636;
+    cursor: pointer;
+    justify-content: center;
+    padding: 0;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: text-top;
+    height: 1em;
+}
+
+a.doc {
+	color: #4a4a4a;
+}
+
+.navbar-item.current {
+    color: #3273dc;
+}
+
+.navbar-item.current-sub {
+    color: #6d90ca;
+}
+
+.copyButton {
+    background-color: #fff;
+    border-color: #dbdbdb;
+    border-width: 1px;
+    color: #363636;
+    cursor: pointer ;
+    justify-content: center;
+    padding: 2px !important;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: text-top;
+    height: 1em;
+}
+
+.copyButton i.material-icons {
+    font-size: 20px;
+}
+
+.resetpassword-card {
+    margin-bottom: 2em;
+    margin-top: 1em;
+    padding: 2em 1em 1.5em 1em;
+}
+
+.resetpassword-card h2 {
+    padding: 1em;
+}
+
+div.remember-tips.columns {
+    margin: 1em 0 1em 0;
+}
+
+.signup-card {
+    margin-bottom: 2em;
+    margin-top: 0;
+}
+.signup-card .control.has-icons-left  {
+    padding-right: 1em;
+}
+.signup-card h2 {
+    padding: 1em;
+}
+
+#admin-mode {
+    margin-right: 0.3em;
+}
+
+.login-extra {
+    margin: 2em 0 0 0;
+}
+[v-cloak] {
+    display: none !important;
+}
+
+.fa {
+    width: 18px;
+}
+
+.serverMessage {
+    display: inline-block;
+}
+.serverMessage p.is-danger {
+    line-height: 2em;
+    font-size: 1em;
+    margin: 0 0 0 1em;
+
+}
+
+
+.terms {
+    margin-top: 1em;
+    padding: 2em 0 2em 0;
+}
+
+.terms ol {
+    margin-left: 2em;
+}
+.terms ol li {
+    margin-left: 2em;
+}
+
+.terms ol li ol {
+    margin-left: 0;
+}
+
+
+.terms h1 {
+    margin-left: 2em;
+}
+.terms h2 {
+    margin-left: 2em;
+}
+.terms h3 {
+    margin-left: 2em;
+}
+
+.terms h4 {
+    margin-left: 2em !important;
+}
+
+.emailCount {
+    width: 50%;
+}
+
+h2.price-title {
+    margin: 0 0 0.5em 0;
+}
+.price a {
+    text-decoration: none;
+}
+
+.price a:hover {
+    text-decoration: none;
+    cursor:default;
+}
+
+.price-container {
+    margin: 2em 0 2em 0;
+}
+
+.navbar-item img.logo {
+    /* background-color: #636569; */
+    max-height: 100% !important;
+    width: 48px !important;
+    height: 48px !important;
+}
+
+.tabs:not(:last-child) {
+    margin-bottom: 0;
+}
+    /* margin-bottom: 1.5rem; */
+
+.tabs ul li a span {
+    width: auto;
+    height: auto;
+}
+
+pre {
+    padding: 0 0 0 1em !important;
+    margin: 0 0 0 0 !important;
+}
+
+pre[class*="language-"] {
+    line-height: 1.2;
+    height: 460px;
+}
+
+@media screen and (max-width: 900px) {
+    div.code-example {display: none;}
+    div.intro {width: 100% !important;}
+}
+.home {
+    margin-top: 2em !important;
+}
+
+.code-example ul {
+    border-bottom-color: #3a3a3a !important;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    /*background-color: #2c2c2c !important; */
+    background-color: #3a3a3a !important;
+}
+.code-example .tabs ul li a {
+    color: #ffffff;
+    border-bottom-color: #2c2c2c;
+    text-decoration: none;
+}
+.code-example .tabs.is-boxed ul li.is-active a {
+    background-color: #3a3a3a;
+    color: #3273dc;
+    border-color: #3a3a3a;
+    border-bottom-color: #3273dc !important;
+    text-decoration: none;
+}
+
+.code-example .tabs.is-boxed ul li a:hover {
+    color: #3273dc !important;
+    border-bottom-color: #3a3a3a;
+    background-color: #3a3a3a;
+    text-decoration: none;
+}
+
+.verify-card {
+    padding: 2em 1em 1.5em 1em;
+}
+
+
+a.navbar-link {
+    text-decoration: none;
+}
+
+a.navbar-link:hover {
+    text-decoration: none;
+    color: #4a4a4a;
+}
+
+a.dropdownLink {
+    text-decoration: none;
+}
+
+a.dropdownLink:hover {
+    text-decoration: none;
+    color: #4a4a4a;
+}
+
+a.no-href:hover {
+    text-decoration: none !important;
+    cursor: default !important;
+    background-color: white !important;
+    text-color: #000000 !important;
+    color: #000000 !important;
+}
+
+a.no-href {
+    text-decoration: none !important;
+    cursor: default !important;
+    background-color: white !important;
+    text-color: #000000 !important;
+    color: #000000 !important;
+}
+
+
+#moreDropdown .is-fullwidth {
+
+}
+
+
+.help.is-danger {
+    /* color: #e48484 !important; */
+    color: #d43d3d !important;
+
+}
+
+.input.is-danger, .textarea.is-danger {
+    /* border-color: #711326 !important; */
+}
+
+div.bd-link {
+    margin: 0 0 0 0;
+}
+
+h2.bd-link-name {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+p.bd-link-subtitle {
+    font-size: 0.9em;
+    margin: 0.2em 0 0.5em 0;
+}
+
+
+
+.inp {
+    border: 1px solid gray;
+    padding: 0 10px;
+    width: 200px;
+    height: 30px;
+    font-size: 18px;
+}
+.btn {
+    border: 1px solid gray;
+    width: 100px;
+    height: 30px;
+    font-size: 18px;
+    cursor: pointer;
+}
+#embed-captcha {
+    width: 300px;
+}
+
+.show {
+    display: block;
+}
+.hide {
+    display: none;
+}
+#notice {
+    color: red;
+}
+.notice {
+    color: red;
+}
+
+a.forgot-password {
+    text-align: right;
+    float: right;
+    color: #3273dc;
+    font-weight: normal;
+}
+
+a.forgot-password:hover {
+    text-decoration: none;
+    cursor: cursor;
+}
+
+.input.is-danger {
+    border-color: #e48484 !important;
+}
+
+
+.navbar-end .navbar-item .navbar-link {
+    padding: .5rem 0 .5rem .75rem !important;
+}
+
+
+div.feature p i {
+	font-size: 60px;
+}
+
+div.feature p {
+    margin: 2em 0 2em 0;
+}
+
+div.feature h1 {
+    font-size: 1.3em;
+}
+
+
+div.feature {
+    text-align:center;
+    padding: 1.5em;
+}
+
+div.feature-desc p {
+    margin: 1em 0 1em 0;
+    font-size: 1.2em;
+}
+
+
+section.even div div.feature {
+    text-align: center;
+
+}
+
+section.odd div div.feature {
+    text-align: center;
+}
+
+section.even div div.feature-desc {
+    text-align: center;
+
+}
+
+section.odd div div.feature-desc {
+    text-align: center;
+}
+
+div.feature-desc ul li {
+    margin: 0 0 1em 0;
+    padding: 0;
+}
+
+.integrate i {
+    color: #3972dc;
+}
+
+.inbox i {
+    color: #ca6e6e;
+}
+
+.inbox p i {
+    width: 60px;
+}
+
+.template i {
+    color: #e48080;
+}
+
+.service i {
+    color: #7b34c7;
+}
+
+.transfer i {
+    color: #48ad48;
+}
+
+
+.signupnow {
+    text-align:  center;
+    margin: 2em 0 2em 0;
+}
+
+img#example {
+    border: 1px solid #cccccc;
+}
+
+.container .image-example {
+    padding: 0px;
+}
+
+td.action button {
+    margin-right: 1em;
+}
+
+#memberlist td.user {
+    width: 25%;
+}
+
+#memberlist td.password {
+    width: 25%;
+}
+#memberlist td.name {
+    width: 25%;
+}
+
+
+#memberlist td.action {
+    width: 25%;
+}
+
+.register-tab {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+}
+
+
+.register-tab li {
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    color: black;
+    border-bottom: 3px solid #ffffff;
+    box-sizing: border-box;
+}
+
+.register-tab .active {
+    background-color: #ffffff;
+    color: #3273dc;
+    font-weight: bold;
+    border-bottom: 3px solid #3273dc;
+    box-sizing: border-box;
+}
+
+.register-tab .select-tab {
+}
+
+.enterprise {
+    user-select: none;
+    margin-top: 5px;
+    padding: 10px 5px 10px 5px;
+}
+
+.personal {
+    user-select: none;
+    margin-top: 5px;
+    padding: 10px 5px 10px 5px;
+}
+
+.signup-card .columns  {
+    padding: 0;
+    margin: 0;
+}
+
+.signup-form {
+    margin-top: 1em;
+}
+
+.signup-form .field-label {
+    margin-right: 0;
+}
+
+.signup-form #personal-username {
+    width: 200px !important;
+    text-align: right;
+}
+.signup-form .feetmail {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3273dc;
+}
+.signup-form .term-checkbox {
+    margin-left: 16px;
+    margin-right: 5px;
+}
+.signup-form a.blank  {
+    padding: 0 5px 0 5px !important;
+}
+
+.signup-form .check-area {
+    margin-bottom: 0 !important;
+}
+
+.login-form #personal-username {
+    text-align: right;
+}
+.login-form .feetmail {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3273dc;
+}
+.login-form .term-checkbox {
+    margin-left: 16px;
+}
+.login-form .check-area {
+    margin-bottom: 0 !important;
+}
+.login-form .personal-login {
+    margin-top: 1.5em;
+}
+
+
+.resetpassword-form {
+    margin-top: 1em;
+}
+
+.resetpassword-form .field-label {
+    margin-right: 0;
+}
+
+.resetpassword-form #personal-username {
+    width: 200px !important;
+    text-align: right;
+}
+.resetpassword-form .feetmail {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3273dc;
+}
+.resetpassword-form .term-checkbox {
+    margin-left: 16px;
+}
+.resetpassword-form .check-area {
+    margin-bottom: 0 !important;
+}
+.homelink {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: center;
+    width: 100%;
+    font-size: 24px;
+    color: #808080;
+}
+
+.license textarea {
+    border: 0;
+    width: 75%;
+    resize: none;
+    vertical-align: middle;
+    font-size: 1em;
+    color: #006023;
+}
+
+.license .copyButton {
+    width: 20%;
+    margin: 0;
+    padding: 0;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.contact-info div {
+    padding: 0 0 0 10px;
+    line-height: 1;
+}
+
+.verify-code {
+    width: 50% !important;
+}
+
+.ent-name {
+    width: 45% !important;
+}
+
+.getMailCodeButton {
+    margin-left: 10px;
+} 
+
+.signup-form .field {
+    padding-bottom: 5px;
+    box-sizing: border-box;
+}
+
+.forgotpassword-form .field-label {
+    margin-right: 0;
+}
+
+.logo-line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.logo-icon {
+    display: inline-flex;
+    padding: 0 8px 0 0;
+}
+
+.logo-name {
+    display: inline-flex;
+    padding: 0;
+}

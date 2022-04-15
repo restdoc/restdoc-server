@@ -1,0 +1,42 @@
+{{define "content"}}
+<div>
+    <button v-show="!adding" v-on:click="addTeam" class="button"><i class="material-icons">add</i>创建团队</button>
+    <div class="has-text-danger serverMessage">
+        <p class="is-danger" v-if="serverMessage != ''"><i class="material-icons">warning</i> [[ serverMessage ]] </p>
+    </div>
+    <table id="domainlist" class="table is-bordered is-hoverable is-fullwidth">
+        <thead>
+            <td class="name">团队名称</td>
+            <td class="action">操作</td>
+        </thead>
+        <tbody>
+            <tr v-show="adding">
+                <td> <input placeholder="请输入域名" class="input"></input></td>
+            </tr>
+            <tr v-for="(item, index) in teams">
+                <td class="name" v-if="item.team !=''">
+                    <a :href="item.url" title="点击以开始配置"> [[ item.name ]]</a>
+                </td>
+                <td class="name" v-else><input placeholder="请输入域名" class="input" v-model="item.temp_team"> </input></td>
+                <td class="action" v-if="item.team !=''">
+                    <button class="button" v-on:click="configTeam(item)"><i class="material-icons">domain</i>域名管理</button>
+                    <button class="button" v-on:click="configMembers(item)"><i class="material-icons">people</i>成员管理</button>
+                    <button class="button" v-on:click="deleteTeam(item)"><i class="material-icons">remove</i> 删除</button>
+                </td>
+                </td>
+                <td class="action" v-else>
+                    <button class="button" v-on:click="saveTeam(item)"><i class="material-icons">add</i> 保存</button>
+                    <button class="button " v-on:click="cancleTeam(index)"><i class="material-icons">remove</i> 取消</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{{ end }}
+{{define "headercss"}}
+{{ end }}
+{{define "headerjs"}}
+{{ end }}
+{{define "footerjs"}}
+<script src="/static/js/team.js?v={{._timestamp}}"></script>
+{{ end }}

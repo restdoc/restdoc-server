@@ -1,0 +1,38 @@
+{{define "topExtra"}}
+{{end}}
+{{define "bottomExtra"}}
+{{end}}
+{{define "footer"}}
+<div class="footer">
+	<div class="container">
+		<div class="columns">
+			{{ if eq .saas.IsSaaS "true"}}
+			<div class="column left"> ©restdoc </div>
+			<div class="column right">
+				<div class="contact-info">
+					<!--
+					<div>
+						<span>
+							<i class="material-icons phone">phone</i>
+						</span>
+						<span class="phone"> 400-08-65536 </span>
+					</div>
+					-->
+					<div>
+						<a target="_blank" href="mailto:support@restdoc.com"><i class="material-icons">email</i></a>
+					</div>
+					<div>
+						<a href="http://beian.miit.gov.cn" target="_blank">沪ICP备17040407号</a>
+					</div>
+				</div>
+			</div>
+			{{ else }}
+			<div class="column left">
+			</div>
+			<div class="column right"> Powered by <a href="https://restdoc.com" target="_blank">restdoc</a>
+			</div>
+			{{ end }}
+		</div>
+	</div>
+</div>
+{{end}}

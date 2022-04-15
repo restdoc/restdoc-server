@@ -1,0 +1,83 @@
+{{define "content"}}
+<div class="columns">
+    <div class="column">
+        <p class="has-text-centered">
+            <a href="/" title="首页" class="homelink">
+                <div>
+                    <div style="display: flex; align-items: center; padding-right: 5px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tornado" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <line x1="21" y1="4" x2="3" y2="4"></line>
+                            <line x1="13" y1="16" x2="7" y2="16"></line>
+                            <line x1="11" y1="20" x2="15" y2="20"></line>
+                            <line x1="6" y1="8" x2="20" y2="8"></line>
+                            <line x1="4" y1="12" x2="16" y2="12"></line>
+                        </svg>
+                    </div>
+                    <div class="brand">
+                        <span>restdoc</span>
+                    </div>
+                </div>
+            </a>
+        </p>
+    </div>
+</div>
+<div class="card login-card">
+    <div class="columns ">
+        <div class="column">
+            <div class="enterprise">
+                <form class="login-form">
+                    <label class="label" for="enterprise-email">邮箱</label>
+                    <div class="field">
+                        <div class="control has-icons-left">
+                            <input id="enterprise-email" placeholder="请输入管理员注册邮箱" v-on:blur="checkUsername" v-on:focus="focusUsername" v-model="entAdminUsername" type="text" class="input" v-bind:class="{ 'is-danger': entAdminUsernameFormatError || entAdminUsernameRequiredError }"></input>
+                            <span class="icon is-small is-left">
+                                <i class="material-icons">email</i>
+                            </span>
+                            <p v-show="entAdminUsernameRequiredError" class="help is-danger">需要输入邮箱</p>
+                            <p v-show="entAdminUsernameFormatError" class="help is-danger ">邮箱格式不正确</p>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="enterprise-password">密码 <a class="forgot-password" href="/forgotpassword">忘记密码？</a> </label>
+                        <div class="control has-icons-left">
+                            <input id="enterprise-password" placeholder="请输入密码" v-on:blur="checkPassword" v-on:focus="focusPassword" v-model="entAdminPassword" class="input" v-bind:class="{ 'is-danger': entAdminPasswordRequiredError}" type="password"></input>
+                            <span class="icon is-small is-left">
+                                <i class="material-icons">lock</i>
+                            </span>
+                            <p v-show="entAdminPasswordRequiredError" class="help is-danger">需要输入密码</p>
+                            <p v-show="entAdminPasswordFormatError" class="help is-danger ">密码格式不正确</p>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <button type="button" v-on:click="login" class="button is-fullwidth is-link">登 录</button>
+                            <p v-show="serverError" class="help is-danger ">[[serverMessage]]</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+<div class="columns">
+    <div class="column">
+        <div class="control has-text-centered"> 还没有帐号？ <a href="/signup">点击注册</a>
+        </div>
+        <div class="control has-text-centered">
+            <a href="{{ .saas.HostDomain }}/terms" target="_blank" class="blank">服务条款</a>及<a href="{{ .saas.HostDomain }}/privacy-policy" target="_blank" class="blank">隐私协议</a>
+        </div>
+    </div>
+</div>
+{{ end }}
+{{define "headercss"}}
+{{ end }}
+{{define "headerjs"}}
+{{ end }}
+{{define "navi"}}
+<nav id="naviApp" class="navbar" role="navigation" aria-label="main navigation"> </nav>
+{{ end }}
+{{define "footerjs"}}
+<script src="/static/js/login.js?v={{._timestamp}}"></script>
+{{ end }}
