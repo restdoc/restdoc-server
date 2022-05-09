@@ -111,15 +111,15 @@ func InitRouter() *gin.Engine {
 
 	r.GET("/api/restdoc/project/list", restdocProject.List)
 	r.GET("/api/restdoc/project/detail/:id", restdocProject.Detail)
-	r.POST("/api/restdoc/project/add", restdocProject.Add)
+	r.POST("/api/restdoc/project/create", restdocProject.Add)
 	r.POST("/api/restdoc/project/update", restdocProject.Update)
 	r.POST("/api/restdoc/project/delete", restdocProject.Delete)
 
-	r.POST("/api/restdoc/group/add", restdocGroup.Add)
+	r.POST("/api/restdoc/group/create", restdocGroup.Add)
 	r.POST("/api/restdoc/group/move", restdocGroup.Move)
 
 	r.GET("/api/restdoc/api/list", restdocApi.List)
-	r.POST("/api/restdoc/api/add", restdocApi.Add)
+	r.POST("/api/restdoc/api/create", restdocApi.Add)
 	r.POST("/api/restdoc/api/update", restdocApi.Update)
 	r.GET("/api/restdoc/api/detail/:id", restdocApi.Detail)
 
