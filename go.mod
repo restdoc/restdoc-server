@@ -56,6 +56,7 @@ require (
 require (
 	github.com/DATA-DOG/go-sqlmock v1.5.0 // indirect
 	github.com/adamzy/cedar-go v0.0.0-20170805034717-80a9c64b256d // indirect
+	github.com/amalfra/etag v1.0.0 // indirect
 	github.com/andybalholm/cascadia v1.1.0 // indirect
 	github.com/armon/go-metrics v0.3.2 // indirect
 	github.com/axiomhq/hyperloglog v0.0.0-20191112132149-a4c4c47bc57f // indirect

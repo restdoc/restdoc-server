@@ -25,6 +25,7 @@ import (
 	"restdoc/config"
 	redispool "restdoc/internal/database/redis"
 	"restdoc/internal/database/snowflake"
+	"restdoc/internal/middlewares"
 	"restdoc/internal/route"
 	"restdoc/logger"
 )
@@ -161,6 +162,9 @@ func main() {
 	*/
 
 	//seelog.See(strings.Join([]string{path, "info.log"}, "/"),23456)
+
+	middlewares.StaticBox = static
+	middlewares.Init()
 
 	route.StaticBox = static
 	route.TemplateBox = static

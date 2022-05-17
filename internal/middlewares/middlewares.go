@@ -1,14 +1,19 @@
 package middlewares
 
 import (
+	"bytes"
 	"crypto/md5"
 	"encoding/hex"
+	"fmt"
+	"io/fs"
 	"net/http"
 	"net/url"
 	"path/filepath"
 	"runtime"
 	"strings"
+	"sync"
 
+	"github.com/amalfra/etag"
 	"github.com/getsentry/sentry-go"
 	"github.com/gin-gonic/gin"
 
@@ -16,6 +21,52 @@ import (
 	redispool "restdoc/internal/database/redis"
 	"restdoc/logger"
 )
+
+const defaultCacheControl = "public, max-age=31536000"
+
+var StaticBox fs.FS
+
+//var etagMap map[string]string
+var etagMap sync.Map
+
+func Init() {
+	initEtags()
+}
+
+func initEtags() {
+
+	//etagMap = map[string]string{}
+	box, _ := fs.Sub(StaticBox, ".")
+	fs.WalkDir(box, ".", func(path string, d fs.DirEntry, err error) error {
+		if err != nil {
+			return nil
+		}
+
+		if path == "." {
+			return nil
+		}
+
+		f, err := box.Open(path)
+		if err != nil {
+			return err
+		}
+
+		buf := new(bytes.Buffer)
+		buf.ReadFrom(f)
+		content := buf.String()
+
+		fpath := fmt.Sprintf("/%s", strings.ToLower(path))
+		if strings.HasSuffix(fpath, "index.html") {
+			fpath = strings.Replace(fpath, "index.html", "", 1) // trim index.html
+		}
+
+		tag := etag.Generate(content, true)
+
+		//etagMap[fpath] = tag
+		etagMap.Store(fpath, tag)
+		return nil
+	})
+}
 
 func StackTrace(all bool) string {
 	buf := make([]byte, 20480)
@@ -164,14 +215,17 @@ func Cors(c *gin.Context) {
 		origin = requestOrigin
 	}
 
-	c.Header("Access-Control-Allow-Origin", origin)
-	c.Header("Access-Control-Allow-Methods", "POST,GET,OPTIONS")
-	c.Header("Access-Control-Allow-Credentials", "true")
-	c.Header("Access-Control-Allow-Headers", "content-type,json")
-	//c.Header("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
-	if c.Request.Method == "OPTIONS" {
-		c.AbortWithStatus(204)
-		return
+	path := strings.ToLower(c.Request.URL.Path)
+	if strings.HasSuffix(path, "/api") {
+		c.Header("Access-Control-Allow-Origin", origin)
+		c.Header("Access-Control-Allow-Methods", "POST,GET,OPTIONS")
+		c.Header("Access-Control-Allow-Credentials", "true")
+		c.Header("Access-Control-Allow-Headers", "content-type,json")
+		//c.Header("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+		if c.Request.Method == "OPTIONS" {
+			c.AbortWithStatus(204)
+			return
+		}
 	}
 	c.Next()
 }
@@ -179,15 +233,28 @@ func Cors(c *gin.Context) {
 func CacheControl(c *gin.Context) {
 	path := strings.ToLower(c.Request.URL.Path)
 	if strings.HasSuffix(path, "/") {
-		c.Header("Cache-Control", "no-cache")
+		c.Header("Cache-Control", defaultCacheControl)
+		if _tag, ok := etagMap.Load(path); ok {
+			tag := _tag.(string)
+			c.Header("Etag", tag)
+		}
 	} else {
 		if strings.HasPrefix(path, "/static") {
-			c.Header("Cache-Control", "public, max-age=31536000")
+			c.Header("Cache-Control", defaultCacheControl)
+			if _tag, ok := etagMap.Load(path); ok {
+				tag := _tag.(string)
+				c.Header("Etag", tag)
+			}
+
 		} else {
 			var extension = filepath.Ext(path)
 			switch extension {
-			case ".css", ".js", ".png", ".jpeg", ".jpg", ".gif", ".pdf", ".ico", ".woff", ".woff2":
-				c.Header("Cache-Control", "public, max-age=31536000")
+			case ".css", ".js", ".png", ".jpeg", ".jpg", ".gif", ".pdf", ".ico", ".woff", ".woff2", ".svg":
+				c.Header("Cache-Control", defaultCacheControl)
+				if _tag, ok := etagMap.Load(path); ok {
+					tag := _tag.(string)
+					c.Header("Etag", tag)
+				}
 			default:
 			}
 		}
