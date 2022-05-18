@@ -216,7 +216,7 @@ func Cors(c *gin.Context) {
 	}
 
 	path := strings.ToLower(c.Request.URL.Path)
-	if strings.HasSuffix(path, "/api") {
+	if strings.HasPrefix(path, "/api") {
 		c.Header("Access-Control-Allow-Origin", origin)
 		c.Header("Access-Control-Allow-Methods", "POST,GET,OPTIONS")
 		c.Header("Access-Control-Allow-Credentials", "true")
