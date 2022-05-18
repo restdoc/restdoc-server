@@ -230,37 +230,30 @@ func Cors(c *gin.Context) {
 	c.Next()
 }
 
+func setCacheHeader(c *gin.Context, path string) {
+	if _tag, ok := etagMap.Load(path); ok {
+		tag := _tag.(string)
+		c.Header("Cache-Control", defaultCacheControl)
+		c.Header("Etag", tag)
+	}
+}
+
 func CacheControl(c *gin.Context) {
 	path := strings.ToLower(c.Request.URL.Path)
 	if strings.HasSuffix(path, "/") {
-		c.Header("Cache-Control", defaultCacheControl)
-		if _tag, ok := etagMap.Load(path); ok {
-			tag := _tag.(string)
-			c.Header("Etag", tag)
-		}
+		setCacheHeader(c, path)
 	} else {
 		if strings.HasPrefix(path, "/static") {
-			c.Header("Cache-Control", defaultCacheControl)
-			if _tag, ok := etagMap.Load(path); ok {
-				tag := _tag.(string)
-				c.Header("Etag", tag)
-			}
-
+			setCacheHeader(c, path)
 		} else {
 			var extension = filepath.Ext(path)
 			switch extension {
 			case ".css", ".js", ".png", ".jpeg", ".jpg", ".gif", ".pdf", ".ico", ".woff", ".woff2", ".svg":
-				c.Header("Cache-Control", defaultCacheControl)
-				if _tag, ok := etagMap.Load(path); ok {
-					tag := _tag.(string)
-					c.Header("Etag", tag)
-				}
+				setCacheHeader(c, path)
 			default:
 			}
 		}
-
 	}
-
 	c.Next()
 }
 
