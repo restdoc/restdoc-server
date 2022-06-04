@@ -18,6 +18,7 @@ import (
 
 	"restdoc/handlers/about"
 	//"restdoc/handlers/changePassword"
+	"restdoc/handlers/authcode"
 	"restdoc/handlers/forgotPassword"
 	"restdoc/handlers/home"
 	"restdoc/handlers/login"
@@ -104,6 +105,9 @@ func InitRouter() *gin.Engine {
 	r.GET("/about", about.About)
 	r.GET("/terms", terms.Terms)
 	r.GET("/privacy-policy", privacy.Privacy)
+
+	r.POST("/code/add", authcode.Add)
+	r.GET("/code/get", authcode.Detail)
 
 	//r.POST("/gt/validate", gt.ValidateGeetest)
 

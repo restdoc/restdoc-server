@@ -1,115 +1,75 @@
 {{define "content"}}
-
-    <div id="app" class="container" v-cloak>
-
-        <section class="section">
-
-            <h2 class="price-title"><i class="material-icons space">mail</i>计费方案</h2>
-            <div class="columns">
-
-                <div class="column">
-
-
-                    <div class="card">
-
-                        <header class="card-header">
-                            <p class="card-header-title">
-                                未认证用户
-                            </p>
-                            <a href="https://document.hedwi.com/verify.html" class="card-header-icon" target="_blank">
-                              <span class="icon">
+<div id="app" class="container" v-cloak>
+    <section class="section">
+        <h2 class="price-title"><i class="material-icons space">mail</i>计费方案</h2>
+        <div class="columns">
+            <div class="column">
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title"> 未认证用户 </p>
+                        <a href="https://document.hedwi.com/verify.html" class="card-header-icon" target="_blank">
+                            <span class="icon">
                                 <i class="material-icons" aria-hidden="true">description</i>
-                              </span>
-                            </a>
-                        </header>
-
-                        <div class="card-content">
-                            <div class="content">
-                                <ul>
-                                    <li>单域名20封/天 </li>
-                                    <li>可提工单申请认证提额</li>
-                                </ul>
-                            </div>
+                            </span>
+                        </a>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <ul>
+                                <li>单域名20封/天 </li>
+                                <li>可提工单申请认证提额</li>
+                            </ul>
                         </div>
-
                     </div>
-
                 </div>
-
-                <div class="column">
-
-                    <div class="card">
-
-
-                        <header class="card-header">
-                            <p class="card-header-title">
-                                认证用户
-                            </p>
-                            <a href="https://document.hedwi.com/verify.html" class="card-header-icon" target="_blank">
-                              <span class="icon">
+            </div>
+            <div class="column">
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title"> 认证用户 </p>
+                        <a href="https://document.hedwi.com/verify.html" class="card-header-icon" target="_blank">
+                            <span class="icon">
                                 <i class="material-icons space" aria-hidden="true">description</i>
-                              </span>
-                            </a>
-                        </header>
-
-                        <div class="card-content">
-                            <div class="content">
-                                <ul>
-                                    <li>单域名上限2000封/天</li>
-                                    <li>免费额度200封/天</li>
-                                    <li>超出免费额度每1000封2元</li>
-                                    <li>可提工单申请提额</li>
-                                </ul>
-                            </div>
+                            </span>
+                        </a>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <ul>
+                                <li>单域名上限2000封/天</li>
+                                <li>免费额度200封/天</li>
+                                <li>超出免费额度每1000封2元</li>
+                                <li>可提工单申请提额</li>
+                            </ul>
                         </div>
                     </div>
-
                 </div>
-
-                <div class="column"> </div>
-
             </div>
-        </section>
-
-        <section class="section price-sum">
-
-            <h2 class="price-title"><i class="material-icons space">calculate</i>费用估算</h2>
-            <div class="price-container columns">
-
-                <div class="column">
-
-                    <div class="field has-addons">
-
-                         <div class="control price">
-                             <a class="button is-info " > 每天发送邮件数量 </a>
-                         </div>
-                         <div class="control is-expanded">
-                             <input class="input emailCount" v-model.number="emailCount" type="number" placeholder="请输入预估月发送邮件数量">
-                         </div>
-                     </div>
-
-                    <div class="cost" v-show="displayCost">
-                        <span>每月费用：[[ cost ]] 元</span>
+            <div class="column"> </div>
+        </div>
+    </section>
+    <section class="section price-sum">
+        <h2 class="price-title"><i class="material-icons space">calculate</i>费用估算</h2>
+        <div class="price-container columns">
+            <div class="column">
+                <div class="field has-addons">
+                    <div class="control price">
+                        <a class="button is-info "> 每天发送邮件数量 </a>
                     </div>
-
+                    <div class="control is-expanded">
+                        <input class="input emailCount" v-model.number="emailCount" type="number" placeholder="请输入预估月发送邮件数量">
+                    </div>
+                </div>
+                <div class="cost" v-show="displayCost">
+                    <span>每月费用：[[ cost ]] 元</span>
                 </div>
             </div>
-
-        </section>
-
-
-    </div>
-
+        </div>
+    </section>
+</div>
 {{ end }}
-
-
-{{define "headercss"}}
-{{ end }}
-
-{{define "headerjs"}}
-{{ end }}
-
-
+{{define "headercss"}} {{ end }}
+{{define "headerjs"}} {{ end }}
 {{ define "footerjs" }}
-    <script src="/static/js/price.js?v={{._timestamp}}"></script>
+<script src="/static/js/price.js?v={{._timestamp}}"></script>
 {{ end }}

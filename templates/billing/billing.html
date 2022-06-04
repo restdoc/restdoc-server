@@ -1,52 +1,31 @@
 {{define "content"}}
-
-    <div id="app" class="container" v-cloak>
-
-        <section>
-
-            <h2 class="price-title"><i class="material-icons">account_balance_wallet</i>余额</h2>
-            <div class="field has-addons ">
-
-                <div class="control is-expanded">
-                    <p>{{.amount}}元</p>
-                </div>
-
+<div id="app" class="container" v-cloak>
+    <section>
+        <h2 class="price-title"><i class="material-icons">account_balance_wallet</i>余额</h2>
+        <div class="field has-addons ">
+            <div class="control is-expanded">
+                <p>{{.amount}}元</p>
             </div>
-
-
-        </section>
-
-        <section>
-
-            <h2 class="price-title"><i class="material-icons">payment</i>充值</h2>
-            <div class="field has-addons ">
-                <div class="control price">
-                    <a class="button is-info " >
-                        支付宝充值金额
-                    </a>
-                </div>
-                <div class="control is-expanded">
-                    <input class="input moneyCount"  v-model.number="money" type="number" placeholder="请输入充值金额">
-                </div>
-
+        </div>
+    </section>
+    <section>
+        <h2 class="price-title"><i class="material-icons">payment</i>充值</h2>
+        <div class="field has-addons ">
+            <div class="control price">
+                <a class="button is-info "> 支付宝充值金额 </a>
             </div>
-
-            <div class="deal">
-                <a class="button is-info" v-on:click="order" >充值</a>
-                
+            <div class="control is-expanded">
+                <input class="input moneyCount" v-model.number="money" type="number" placeholder="请输入充值金额">
             </div>
-        </section>
-
-    </div>
-
+        </div>
+        <div class="deal">
+            <a class="button is-info" v-on:click="order">充值</a>
+        </div>
+    </section>
+</div>
 {{ end }}
-
-{{ define "headercss" }}
-{{ end }}
-
-{{ define "headerjs" }}
-{{ end }}
-
+{{ define "headercss" }} {{ end }}
+{{ define "headerjs" }} {{ end }}
 {{ define "footerjs" }}
-    <script src="/static/js/billing.js?v={{._timestamp}}"></script>
+<script src="/static/js/billing.js?v={{._timestamp}}"></script>
 {{ end }}

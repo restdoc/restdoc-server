@@ -9,13 +9,7 @@ restdoc-server
 .DS_Store
 .idea
 vendor
-static/kanban
-static/mail
 static/js/
-static/contacts
-mail/
-kanban/
-contacts/
 restdoc/
 air.toml
 certs

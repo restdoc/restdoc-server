@@ -1,6 +1,6 @@
 all:  pack
 
-
+build:opack deploy
 pack:
 	sh cmd.sh
 	GOOS=linux GOARCH=amd64 go build -o restdoc-server main.go
@@ -9,7 +9,7 @@ opack:
 	sh cmd.sh
 	GOOS=linux GOARCH=amd64 go build -o restdoc-server main.go
 
-saas: pack qcloud
+saas: pack deploy
 
 deploy:
 	scp restdoc-server server1:/data/www/restdoc-server/_tmp

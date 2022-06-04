@@ -1184,3 +1184,24 @@ td.action button {
     display: inline-flex;
     padding: 0;
 }
+
+.logo-area {
+  user-select: none;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.logo-area div {
+  display: flex;
+  line-height: 40px;
+  align-items: center;
+  height: 40px;
+  padding: 0 2px 0 2px;
+}
+
+.logo-area .product-name {
+  padding-left: 10px;
+  color: var(--logo-grey-color);
+  font-size: 16px;
+}

@@ -1,34 +1,23 @@
 {{define "content"}}
-
 <div id="app" class="container" v-cloak>
-
     {{ if eq .s.Valid "true" }}
-
     {{ else }}
-        <div>
-            <div class="notification">
-             </div>
-    {{ end }}
-
-    <div class="chart"  style="width: 100%; height: 40%;">
-        <canvas id="myChart" width="200" height="80"></canvas>
+    <div>
+        <div class="notification">
+        </div>
+        {{ end }}
+        <div class="chart" style="width: 100%; height: 40%;">
+            <canvas id="myChart" width="200" height="80"></canvas>
+        </div>
     </div>
-
-</div>
-
-{{ end }}
-
-{{define "headercss"}}
+    {{ end }}
+    {{define "headercss"}}
     <link rel="stylesheet" href="/static/css/chart.min.css?v={{._timestamp}}">
-
-{{ end }}
-
-{{define "headerjs"}}
+    {{ end }}
+    {{define "headerjs"}}
     <script src="/static/js/chart.min.js?v={{._timestamp}}"></script>
-{{ end }}
-
-{{define "footerjs"}}
-
+    {{ end }}
+    {{define "footerjs"}}
     <script src="/static/js/dashboard.js?v={{._timestamp}}"></script>
     <script>
         var ctx = document.getElementById('myChart').getContext('2d');
@@ -37,5 +26,4 @@
         var myChart = new Chart(ctx, data);
 
     </script>
-
-{{ end }}
+    {{ end }}
