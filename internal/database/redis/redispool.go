@@ -14,6 +14,8 @@ import (
 var CacheDb *redis.Client
 var SessionDb *redis.Client
 
+const SESSION_PREFIX = "restdoc_session"
+
 func Init() {
 
 	if CacheDb == nil {
@@ -54,7 +56,7 @@ func Init() {
 func GetSession(session_id string) (Models.Session, error) {
 
 	var session Models.Session
-	key := "session_" + session_id
+	key := SESSION_PREFIX + session_id
 	data, err := SessionDb.Get(key).Result()
 	if err != nil {
 		return session, err
@@ -72,7 +74,7 @@ func GetSession(session_id string) (Models.Session, error) {
 
 func SetSession(session_id string, session Models.Session, expire int) error {
 
-	key := "session_" + session_id
+	key := SESSION_PREFIX + session_id
 	data, err := json.Marshal(session)
 	if err != nil {
 		glog.Error("session marshal error", err)

@@ -128,6 +128,7 @@ func InitRouter() *gin.Engine {
 	r.GET("/api/restdoc/api/detail/:id", restdocApi.Detail)
 
 	r.POST("/api/restdoc/endpoint/update", restdocEndpoint.Update)
+	r.POST("/api/restdoc/endpoint/create", restdocEndpoint.Create)
 
 	r.GET("/api/user/info", user.UserInfo)
 
