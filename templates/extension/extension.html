@@ -1,0 +1,25 @@
+{{define "content"}}
+<div class="container extension-download">
+    <div>
+        <h1>Restdoc 浏览器扩展 </h1>
+    </div>
+    <div>
+        <span>安装Chrome扩展 支持本地/跨域测试</span>
+        <ul>
+            <li>
+                <a href="https://chrome.google.com/webstore/detail/restdoc-browser-extension/olcigjikeingmohficilmkpcjiibkodk" target="_blank" />1. 从商店安装</a>
+            </li>
+            <li>
+                <a href="/static/extension/dist.crx" target="_blank" />2. 离线安装</a>
+            </li>
+        </ul>
+    </div>
+</div>
+{{ end }}
+{{define "topExtra" }}
+{{ end }}
+{{define "headercss"}} {{ end }}
+{{define "headerjs"}} {{ end }}
+{{ define "footerjs" }}
+<script src="/static/js/home.js?v={{._timestamp}}"></script>
+{{ end }}

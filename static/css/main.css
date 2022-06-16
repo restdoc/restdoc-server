@@ -1205,3 +1205,15 @@ td.action button {
   color: var(--logo-grey-color);
   font-size: 16px;
 }
+
+.extension-download {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

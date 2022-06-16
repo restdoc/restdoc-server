@@ -330,6 +330,26 @@ func homeRender(f embed.FS, r *multitemplate.Render) error {
 	return nil
 }
 
+func extensionRender(f embed.FS, r *multitemplate.Render) error {
+	extension_templates := []string{
+		getContent(f, "templates/base/base.html"),
+		getContent(f, "templates/base/search.html"),
+		getContent(f, "templates/base/navi.html"),
+		getContent(f, "templates/base/footer.html"),
+		getContent(f, "templates/base/track.html"),
+		getContent(f, "templates/extension/extension.html"),
+	}
+
+	extension_tmp, err := BuildTemplate("Extension", extension_templates)
+	if err != nil {
+		glog.Error(err)
+		return err
+	}
+
+	r.Add("Extension", extension_tmp)
+	return nil
+}
+
 func aboutRender(f embed.FS, r *multitemplate.Render) error {
 	about_home_templates := []string{
 		getContent(f, "templates/base/base.html"),
@@ -437,6 +457,7 @@ func render(f embed.FS) multitemplate.Render {
 	termsRender(f, &r)
 	privacyRender(f, &r)
 	errorRender(f, &r)
+	extensionRender(f, &r)
 
 	loginRender(f, &r)
 	signupRender(f, &r)

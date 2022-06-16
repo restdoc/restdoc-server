@@ -344,7 +344,7 @@ func GetSession(c *gin.Context) {
 	}
 
 	switch firstPath {
-	case "", "price":
+	case "", "price", "extension":
 		need_permission = false
 		handleSession(c, need_permission) // 需要加载session
 		return
