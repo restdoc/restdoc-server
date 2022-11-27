@@ -102,6 +102,11 @@ func Login(c *gin.Context) {
 			userId := strconv.FormatInt(uid, 10)
 			valid := strconv.FormatBool(_valid)
 
+			ids, err := utils.GetTeamIds(uid)
+			if err != nil {
+				//
+			}
+
 			session := Models.Session{
 				Id:     userId,
 				User:   _name,
@@ -110,6 +115,7 @@ func Login(c *gin.Context) {
 				Locale: localeName,
 				Login:  "true",
 				Admin:  strconv.FormatBool(isAdmin),
+				TeamId: ids,
 			}
 			err = redispool.SetSession(session_id.String(), session, 86400*7)
 			if err == nil {

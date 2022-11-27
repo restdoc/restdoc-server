@@ -31,6 +31,10 @@ type Config struct {
 	APIBaseUrl       string
 	APIKey           string
 	FromUser         string
+	FromPassword     string
+	SmtpServer       string
+	SmtpServerPort   int
+	SmtpTls          bool
 	ToUser           string
 	SupportUser      string
 	AliPay           AliPayInfo

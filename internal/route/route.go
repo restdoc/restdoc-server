@@ -19,6 +19,7 @@ import (
 	"restdoc/handlers/about"
 	//"restdoc/handlers/changePassword"
 	"restdoc/handlers/authcode"
+	"restdoc/handlers/extension"
 	"restdoc/handlers/forgotPassword"
 	"restdoc/handlers/home"
 	"restdoc/handlers/login"
@@ -28,6 +29,7 @@ import (
 	"restdoc/handlers/restdoc/endpoint"
 	"restdoc/handlers/restdoc/group"
 	"restdoc/handlers/restdoc/home"
+	"restdoc/handlers/restdoc/param"
 	"restdoc/handlers/restdoc/project"
 	"restdoc/handlers/settings"
 	"restdoc/handlers/signup"
@@ -125,10 +127,16 @@ func InitRouter() *gin.Engine {
 	r.GET("/api/restdoc/api/list", restdocApi.List)
 	r.POST("/api/restdoc/api/create", restdocApi.Add)
 	r.POST("/api/restdoc/api/update", restdocApi.Update)
+	r.POST("/api/restdoc/api/delete", restdocApi.Delete)
+	r.POST("/api/restdoc/api/move", restdocApi.Move)
 	r.GET("/api/restdoc/api/detail/:id", restdocApi.Detail)
 
 	r.POST("/api/restdoc/endpoint/update", restdocEndpoint.Update)
 	r.POST("/api/restdoc/endpoint/create", restdocEndpoint.Create)
+	r.POST("/api/restdoc/endpoint/delete", restdocEndpoint.Delete)
+
+	r.POST("/api/restdoc/param/create", restdocParam.Create)
+	r.POST("/api/restdoc/param/delete", restdocParam.Delete)
 
 	r.GET("/api/user/info", user.UserInfo)
 
@@ -136,6 +144,8 @@ func InitRouter() *gin.Engine {
 	r.GET("/restdoc/", restdocHome.Locale)
 
 	r.GET("/team", team.Page)
+
+	r.GET("/extension", extension.Page)
 
 	r.GET("/api/team/list", team.List)
 	r.POST("/api/team/create", team.Create)

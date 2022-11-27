@@ -2,12 +2,15 @@ package utils
 
 import (
 	"bytes"
+	"crypto/tls"
 	"encoding/base64"
 	"encoding/json"
 	"encoding/xml"
 	"errors"
 	"fmt"
+	"net/smtp"
 
+	"github.com/jordan-wright/email"
 	"github.com/levigross/grequests"
 
 	"restdoc/config"
@@ -157,4 +160,37 @@ func SendForgotPasswordEmail(to string, from string, code string, subject string
 	}
 
 	return nil
+}
+
+func sendMail() {
+
+	ssl := true
+	host := config.DefaultConfig.SmtpServer
+	username := "no-reply@notice.restdoc.com"
+	//username = "hedwi@1024job.com"
+	password := "1f6e26ad6f677d5415f5d8e9d15eb709"
+	//password = "ujlqsgkgbfuyiaqd"
+	auth := smtp.PlainAuth("", username, password, host)
+
+	e := email.NewEmail()
+	e.From = username
+	//e.To = []string{"lxl360@qq.com"}
+	e.To = []string{"839873980@qq.com"}
+	e.Subject = "smtp test "
+	e.Text = []byte("smtp test from hedwi")
+
+	if ssl {
+		err := e.SendWithTLS(host+":465", auth, &tls.Config{InsecureSkipVerify: false, ServerName: host})
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		fmt.Println("OK")
+	} else {
+		err := e.Send(host+":25", auth)
+		if err != nil {
+			fmt.Println(err)
+		}
+	}
+
 }
