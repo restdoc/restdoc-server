@@ -971,6 +971,7 @@ img#example {
 
 .container .image-example {
     padding: 0px;
+    border: 1px solid #ececec;
 }
 
 td.action button {
