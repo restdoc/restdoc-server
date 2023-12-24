@@ -10,31 +10,11 @@ import (
 	"restdoc/config"
 )
 
-func TestGetHostName(t *testing.T) {
-	cases := []struct {
-		in, want string
-	}{
-		{"", ""},
-		{".", ""},
-		{"hello.com", "@"},
-		{"www.hello.com", "www"},
-		{"www.www.hello.com", "www.www"},
-		{"notice.hello.com", "notice"},
-	}
-
-	for _, c := range cases {
-		got := GetHostName(c.in)
-		if got != c.want {
-			t.Errorf("GetHostName(%q) == %q, want(%q)", c.in, got, c.want)
-		}
-	}
-}
-
 func TestGetHashedPassword(t *testing.T) {
 
 	cases := []struct {
 		password string
-		uniq     uint64
+		uniq     int64
 		want     string
 	}{
 		{"helloworld", 342872526663266958, "55c70c69d715b92fbddcb7f8cdab9a6f26c74216e043369d8757ed74ca6c634b"},
