@@ -2,7 +2,7 @@ package authcode
 
 import (
 	"net/http"
-	"strconv"
+	//"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -26,13 +26,15 @@ func Detail(c *gin.Context) {
 		return
 	}
 
-	idstr := strconv.FormatInt(id, 10)
-	item := gin.H{
-		"id":      idstr,
-		"content": code.VerifyCode,
-	}
+	/*
+		    idstr := strconv.FormatInt(id, 10)
+		        item := gin.H{
+		            "id":      idstr,
+		            "content": code.VerifyCode,
+		        }
 
-	resp := gin.H{"data": item, "code": 0, "msg": "OK"}
-	c.JSON(http.StatusOK, resp)
+				resp := gin.H{"data": item, "code": 0, "msg": "OK"}
+	*/
+	c.String(http.StatusOK, code.VerifyCode)
 	return
 }
