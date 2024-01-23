@@ -2,11 +2,7 @@ module restdoc
 
 go 1.17
 
-replace github.com/blugelabs/bluge => /Users/solos/dev/bluge // 绝对路径 或 相对路径 都可以
-
-replace github.com/hedwi/douceur => /Users/solos/dev/douceur // 绝对路径 或 相对路径 都可以
-
-replace restdoc-models => /Users/solos/dev/restdoc-models
+replace restdoc-models => ../restdoc-models
 
 require (
 	github.com/BurntSushi/toml v0.3.1

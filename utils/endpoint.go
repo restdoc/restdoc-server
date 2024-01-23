@@ -2,10 +2,16 @@ package utils
 
 import (
 	Models "restdoc-models/models"
+	"sort"
 	"strconv"
+
+	"github.com/ericlagergren/decimal"
 )
 
 func FormatEndpoints(endpoints []Models.RestEndpoint) map[int64][]map[string]interface{} {
+
+	sortRestEndpoints(endpoints)
+
 	endpointMaps := map[int64][]map[string]interface{}{}
 
 	for i := range endpoints {
@@ -27,4 +33,23 @@ func FormatEndpoints(endpoints []Models.RestEndpoint) map[int64][]map[string]int
 		}
 	}
 	return endpointMaps
+}
+
+func sortRestEndpoints(restEndpoints []Models.RestEndpoint) {
+	sort.Slice(restEndpoints, func(i, j int) bool {
+		first := restEndpoints[i]
+		second := restEndpoints[j]
+		firstWeight := first.Weight
+		secondWeight := second.Weight
+		firstV, ok := new(decimal.Big).SetString(firstWeight)
+		if !ok {
+			return false
+		}
+		secondV, ok := new(decimal.Big).SetString(secondWeight)
+		if !ok {
+			return false
+		}
+		result := firstV.Cmp(secondV)
+		return result < 0
+	})
 }

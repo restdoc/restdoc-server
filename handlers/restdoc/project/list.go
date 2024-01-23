@@ -1,11 +1,12 @@
 package restdocProject
 
 import (
-	"fmt"
 	"net/http"
+	"sort"
 	"strconv"
 	"time"
 
+	"github.com/ericlagergren/decimal"
 	"github.com/gin-gonic/gin"
 	"github.com/golang/glog"
 
@@ -19,7 +20,6 @@ func List(c *gin.Context) {
 	timestamp := now.Unix()
 
 	s := utils.FormatSession(c)
-	fmt.Println(s.Id)
 	uid, err := strconv.ParseInt(s.Id, 10, 64)
 	if err != nil {
 		glog.Error("wrong session user id:", s.Id)
@@ -69,6 +69,8 @@ func List(c *gin.Context) {
 
 	endpointMaps := utils.FormatEndpoints(endpoints)
 
+	sortRestProjects(list)
+
 	projects := []map[string]interface{}{}
 	for i := range list {
 		item := list[i]
@@ -95,4 +97,23 @@ func List(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"code": 0, "message": "获取列表成功", "data": results})
 	return
+}
+
+func sortRestProjects(restProjects []Models.RestProject) {
+	sort.Slice(restProjects, func(i, j int) bool {
+		first := restProjects[i]
+		second := restProjects[j]
+		firstWeight := first.Weight
+		secondWeight := second.Weight
+		firstV, ok := new(decimal.Big).SetString(firstWeight)
+		if !ok {
+			return false
+		}
+		secondV, ok := new(decimal.Big).SetString(secondWeight)
+		if !ok {
+			return false
+		}
+		result := firstV.Cmp(secondV)
+		return result < 0
+	})
 }

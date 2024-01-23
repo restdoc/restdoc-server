@@ -25,12 +25,12 @@ import (
 	"restdoc/handlers/login"
 	"restdoc/handlers/logout"
 	"restdoc/handlers/privacy"
-	"restdoc/handlers/restdoc/api"
-	"restdoc/handlers/restdoc/endpoint"
-	"restdoc/handlers/restdoc/group"
-	"restdoc/handlers/restdoc/home"
-	"restdoc/handlers/restdoc/param"
-	"restdoc/handlers/restdoc/project"
+	restdocApi "restdoc/handlers/restdoc/api"
+	restdocEndpoint "restdoc/handlers/restdoc/endpoint"
+	restdocGroup "restdoc/handlers/restdoc/group"
+	restdocHome "restdoc/handlers/restdoc/home"
+	restdocParam "restdoc/handlers/restdoc/param"
+	restdocProject "restdoc/handlers/restdoc/project"
 	"restdoc/handlers/settings"
 	"restdoc/handlers/signup"
 	"restdoc/handlers/team"
@@ -120,6 +120,7 @@ func InitRouter() *gin.Engine {
 	r.POST("/api/restdoc/project/create", restdocProject.Add)
 	r.POST("/api/restdoc/project/update", restdocProject.Update)
 	r.POST("/api/restdoc/project/delete", restdocProject.Delete)
+	r.POST("/api/restdoc/project/move", restdocProject.Move)
 
 	r.POST("/api/restdoc/group/create", restdocGroup.Add)
 	r.POST("/api/restdoc/group/move", restdocGroup.Move)
@@ -134,6 +135,7 @@ func InitRouter() *gin.Engine {
 	r.POST("/api/restdoc/endpoint/update", restdocEndpoint.Update)
 	r.POST("/api/restdoc/endpoint/create", restdocEndpoint.Create)
 	r.POST("/api/restdoc/endpoint/delete", restdocEndpoint.Delete)
+	r.POST("/api/restdoc/endpoint/move", restdocEndpoint.Move)
 
 	r.POST("/api/restdoc/param/create", restdocParam.Create)
 	r.POST("/api/restdoc/param/delete", restdocParam.Delete)
