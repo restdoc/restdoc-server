@@ -8,6 +8,16 @@
    
    go mod vendor
 
+   
+   安装air
+
+   go install github.com/cosmtrek/air@latest
+
+
 ### 运行
 
-   go run main.go
+
+   
+   cp air.conf.example air.conf
+   air -c air.conf
+
