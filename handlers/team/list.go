@@ -9,7 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 
-	Models "restdoc-models/models"
+	Models "github.com/restdoc/restdoc-models"
 
 	"restdoc/utils"
 )

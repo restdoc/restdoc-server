@@ -9,7 +9,7 @@ import (
 	"github.com/golang/glog"
 	"golang.org/x/text/language"
 
-	Models "restdoc-models/models"
+	Models "github.com/restdoc/restdoc-models"
 )
 
 func Info(c *gin.Context) {

@@ -7,7 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	RestModels "restdoc-models/models"
+	RestModels "github.com/restdoc/restdoc-models"
 )
 
 func Detail(c *gin.Context) {

@@ -9,8 +9,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 
-	Models "restdoc-models/models"
 	"restdoc/config"
+
+	Models "github.com/restdoc/restdoc-models"
 )
 
 func MemberList(c *gin.Context) {

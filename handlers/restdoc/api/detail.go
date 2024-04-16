@@ -8,10 +8,12 @@ import (
 	//"github.com/ericlagergren/decimal"
 	"github.com/gin-gonic/gin"
 	"github.com/golang/glog"
+
 	//"gorm.io/gorm"
 
-	Models "restdoc-models/models"
 	"restdoc/utils"
+
+	Models "github.com/restdoc/restdoc-models"
 )
 
 func Detail(c *gin.Context) {

@@ -12,8 +12,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/golang/glog"
 
-	Models "restdoc-models/models"
 	"restdoc/utils"
+
+	Models "github.com/restdoc/restdoc-models"
 )
 
 func List(c *gin.Context) {

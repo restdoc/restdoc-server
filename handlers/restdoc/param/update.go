@@ -9,9 +9,10 @@ import (
 	"github.com/ericlagergren/decimal"
 	"github.com/gin-gonic/gin"
 
-	RestModels "restdoc-models/models"
 	"restdoc/internal/database/snowflake"
 	"restdoc/utils"
+
+	RestModels "github.com/restdoc/restdoc-models"
 )
 
 func Update(c *gin.Context) {

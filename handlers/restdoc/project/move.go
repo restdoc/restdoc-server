@@ -9,8 +9,9 @@ import (
 	"github.com/ericlagergren/decimal"
 	"github.com/gin-gonic/gin"
 
-	Models "restdoc-models/models"
 	"restdoc/utils"
+
+	Models "github.com/restdoc/restdoc-models"
 )
 
 type moveForm struct {

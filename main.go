@@ -3,7 +3,6 @@ package main
 import (
 	"crypto/tls"
 	"embed"
-	"errors"
 	"fmt"
 	"io/ioutil"
 	"log"

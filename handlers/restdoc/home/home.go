@@ -9,7 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"golang.org/x/text/language"
 
-	Models "restdoc-models/models"
+	Models "github.com/restdoc/restdoc-models"
 )
 
 func Locale(c *gin.Context) {

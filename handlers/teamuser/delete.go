@@ -9,9 +9,10 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 
-	Models "restdoc-models/models"
 	"restdoc/config"
 	"restdoc/utils"
+
+	Models "github.com/restdoc/restdoc-models"
 )
 
 type memberDeleteForm struct {

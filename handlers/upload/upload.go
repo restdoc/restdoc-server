@@ -2,20 +2,20 @@ package upload
 
 import (
 	/*
-	"bytes"
-	"context"
-	"fmt"
-	"io"
+		"bytes"
+		"context"
+		"fmt"
+		"io"
 
-	"mime"
-	"net/http"
-	"time"
+		"mime"
+		"net/http"
+		"time"
 	*/
 	"mime/multipart"
 
 	"github.com/gin-gonic/gin"
 	/*
-		Models "restdoc-models/models"
+		Models "github.com/restdoc/restdoc-models"
 		pb "restdoc/internal/proto/base"
 	*/)
 

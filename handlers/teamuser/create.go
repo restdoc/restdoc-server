@@ -12,10 +12,11 @@ import (
 
 	//"golang.org/x/crypto/bcrypt"
 
-	Models "restdoc-models/models"
 	"restdoc/config"
 	"restdoc/internal/database/snowflake"
 	"restdoc/utils"
+
+	Models "github.com/restdoc/restdoc-models"
 )
 
 var emailMatch = regexp.MustCompile(`[.@_a-zA-Z0-9]{1,128}`)

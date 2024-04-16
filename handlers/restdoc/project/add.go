@@ -11,8 +11,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	Models "restdoc-models/models"
 	"restdoc/internal/database/snowflake"
+
+	Models "github.com/restdoc/restdoc-models"
 )
 
 const defaultWeight = "420000000"

@@ -9,7 +9,7 @@ import (
 	"github.com/golang/glog"
 	"gorm.io/gorm"
 
-	Models "restdoc-models/models"
+	Models "github.com/restdoc/restdoc-models"
 )
 
 func MemberInfo(c *gin.Context) {

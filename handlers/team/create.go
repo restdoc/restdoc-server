@@ -11,9 +11,10 @@ import (
 
 	//"golang.org/x/crypto/bcrypt"
 
-	RestModels "restdoc-models/models"
 	"restdoc/internal/database/snowflake"
 	"restdoc/utils"
+
+	RestModels "github.com/restdoc/restdoc-models"
 )
 
 type teamCreateForm struct {

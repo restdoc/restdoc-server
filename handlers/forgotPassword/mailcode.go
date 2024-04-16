@@ -10,11 +10,12 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/golang/glog"
 
-	Models "restdoc-models/models"
 	"restdoc/config"
-	"restdoc/internal/database/redis"
+	redispool "restdoc/internal/database/redis"
 	"restdoc/internal/database/snowflake"
 	"restdoc/utils"
+
+	Models "github.com/restdoc/restdoc-models"
 )
 
 const forgotKey = "forgot_"

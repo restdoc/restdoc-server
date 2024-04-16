@@ -9,9 +9,10 @@ import (
 	"github.com/gin-gonic/gin"
 	"golang.org/x/text/language"
 
-	Models "restdoc-models/models"
 	"restdoc/consts"
 	redispool "restdoc/internal/database/redis"
+
+	Models "github.com/restdoc/restdoc-models"
 )
 
 type settingsUpdateForm struct {

@@ -10,11 +10,12 @@ import (
 	"github.com/golang/glog"
 	"github.com/google/uuid"
 
-	Models "restdoc-models/models"
 	"restdoc/config"
 	"restdoc/consts"
 	redispool "restdoc/internal/database/redis"
 	"restdoc/utils"
+
+	Models "github.com/restdoc/restdoc-models"
 )
 
 type loginForm struct {

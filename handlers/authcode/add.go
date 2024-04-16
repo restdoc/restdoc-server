@@ -8,7 +8,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	RestModels "restdoc-models/models"
+	RestModels "github.com/restdoc/restdoc-models"
 )
 
 type cardForm struct {

@@ -10,8 +10,9 @@ import (
 	"github.com/ericlagergren/decimal"
 	"github.com/gin-gonic/gin"
 
-	RestModels "restdoc-models/models"
 	"restdoc/internal/database/snowflake"
+
+	RestModels "github.com/restdoc/restdoc-models"
 )
 
 const defaultWeight = "420000000"

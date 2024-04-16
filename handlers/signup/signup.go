@@ -2,7 +2,6 @@ package signup
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"net/http"
 	"strconv"
@@ -17,13 +16,14 @@ import (
 
 	//"github.com/xxtea/xxtea-go/xxtea"
 
-	Models "restdoc-models/models"
 	"restdoc/config"
 	"restdoc/consts"
 	redispool "restdoc/internal/database/redis"
 	"restdoc/internal/database/snowflake"
 	"restdoc/third/geetest"
 	"restdoc/utils"
+
+	Models "github.com/restdoc/restdoc-models"
 )
 
 const (
@@ -200,12 +200,6 @@ func SignUp(c *gin.Context) {
 
 	valid := "true"
 
-	var userCount = int64(0)
-	if config.DefaultConfig.SaaSDomain == "" {
-		userCount = Models.UserCount()
-		fmt.Println(userCount)
-	}
-
 	localeName := ""
 	tag, err := locale.Detect()
 	if err != nil {
@@ -213,19 +207,6 @@ func SignUp(c *gin.Context) {
 		fmt.Println(err)
 	} else {
 		localeName = tag.String()
-	}
-
-	if config.DefaultConfig.SaaSDomain == "" {
-
-		if userCount > 10 {
-			//add default server
-			msg := "user numbers limited"
-			err = errors.New(msg)
-			if err != nil {
-				c.JSON(http.StatusOK, gin.H{"ts": ts, "code": 5, "error": msg, "message": msg, "data": gin.H{}})
-				return
-			}
-		}
 	}
 
 	err = Models.AddNewUser(user)

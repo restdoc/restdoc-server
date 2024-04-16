@@ -8,7 +8,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	Models "restdoc-models/models"
+	Models "github.com/restdoc/restdoc-models"
 )
 
 type listUpdateForm struct {

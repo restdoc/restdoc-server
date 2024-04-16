@@ -10,11 +10,12 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/golang/glog"
 
-	Models "restdoc-models/models"
 	"restdoc/config"
 	redispool "restdoc/internal/database/redis"
 	"restdoc/third/geetest"
 	"restdoc/utils"
+
+	Models "github.com/restdoc/restdoc-models"
 )
 
 const (
