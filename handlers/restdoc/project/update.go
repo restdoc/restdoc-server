@@ -12,8 +12,12 @@ import (
 )
 
 type projectUpdateForm struct {
-	Id   string `form:"id" binding:"required"`
-	Name string `form:"name" `
+	Id        string `form:"id" binding:"required"`
+	Name      string `form:"name" `
+	Color     string `form:"color" `
+	Icon      string `form:"icon" `
+	NameColor string `form:"name_color" `
+	IconColor string `form:"icon_color" `
 }
 
 func Update(c *gin.Context) {
@@ -39,14 +43,13 @@ func Update(c *gin.Context) {
 	updates := map[string]interface{}{"updated_at": updatedAt}
 
 	name := strings.TrimSpace(form.Name)
+	icon := strings.TrimSpace(form.Icon)
+	nameColor := strings.TrimSpace(form.NameColor)
+	iconColor := strings.TrimSpace(form.IconColor)
+	color := strings.TrimSpace(form.Color)
 
 	if name != "" {
 		updates["name"] = name
-	}
-
-	if name == "" {
-		c.JSON(http.StatusOK, gin.H{"timestamp": timestamp, "data": gin.H{}, "code": 1, "message": "status and name are empty."})
-		return
 	}
 
 	session, ok := c.Get("session")
@@ -75,6 +78,22 @@ func Update(c *gin.Context) {
 		return
 	}
 
+	if iconColor != "" && iconColor != pr.IconColor {
+		updates["icon_color"] = iconColor
+	}
+
+	if icon != "" && icon != pr.Icon {
+		updates["icon"] = icon
+	}
+
+	if nameColor != "" && nameColor != pr.NameColor {
+		updates["name_color"] = nameColor
+	}
+
+	if color != "" && color != pr.Color {
+		updates["color"] = color
+	}
+
 	err = Models.UpdateRestProject(&pr, updates)
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{"err": err.Error(), "timestamp": timestamp, "data": gin.H{}, "code": 5, "message": "create songlist error"})
@@ -82,11 +101,16 @@ func Update(c *gin.Context) {
 	}
 
 	u := &Models.User{Id: uid}
+
 	item := gin.H{
 		"id":         id,
 		"user":       u,
-		"name":       name,
-		"project_id": project_id,
+		"name":       pr.Name,
+		"color":      pr.Color,
+		"icon":       pr.Icon,
+		"icon_color": pr.IconColor,
+		"name_color": pr.NameColor,
+		"project_id": pr.Id,
 		"updated_at": updatedAt,
 	}
 

@@ -10,7 +10,7 @@ restdoc-server
 .idea
 vendor
 static/js/
-./restdoc/
+/restdoc/
 air.toml
 certs
 backup

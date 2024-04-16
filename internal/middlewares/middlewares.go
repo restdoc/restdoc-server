@@ -18,6 +18,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"restdoc/config"
+	"restdoc/consts"
 	redispool "restdoc/internal/database/redis"
 	"restdoc/logger"
 )
@@ -26,7 +27,7 @@ const defaultCacheControl = "public, max-age=31536000"
 
 var StaticBox fs.FS
 
-//var etagMap map[string]string
+// var etagMap map[string]string
 var etagMap sync.Map
 
 func Init() {
@@ -260,7 +261,7 @@ func CacheControl(c *gin.Context) {
 func handleSession(c *gin.Context, need_permission bool) {
 
 	needJsonResponse := c.Request.Header.Get("json") == "true"
-	if _session_id, err := c.Request.Cookie("session_id"); err == nil {
+	if _session_id, err := c.Request.Cookie(consts.CookieKey); err == nil {
 		session_id := _session_id.Value
 		session, err := redispool.GetSession(session_id)
 		if err != nil {

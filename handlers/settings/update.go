@@ -9,8 +9,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"golang.org/x/text/language"
 
-	redispool "restdoc/internal/database/redis"
 	Models "restdoc-models/models"
+	"restdoc/consts"
+	redispool "restdoc/internal/database/redis"
 )
 
 type settingsUpdateForm struct {
@@ -43,7 +44,7 @@ func Update(c *gin.Context) {
 	}
 
 	session_id := ""
-	if _session_id, err := c.Request.Cookie("session_id"); err == nil {
+	if _session_id, err := c.Request.Cookie(consts.CookieKey); err == nil {
 		session_id = _session_id.Value
 	}
 

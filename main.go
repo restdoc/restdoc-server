@@ -131,14 +131,6 @@ func main() {
 	Models.Init(&modelConfig)
 	Models.CreateTables()
 
-	if !isSaaS { //selfhost
-		members := Models.MembersCount()
-		if members > int64(config.DefaultConfig.Count) {
-			err := errors.New("users limit error")
-			panic(err)
-		}
-	}
-
 	path := "logs"
 	mode := os.ModePerm
 	if _, err := os.Stat(path); os.IsNotExist(err) {

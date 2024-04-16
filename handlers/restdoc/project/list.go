@@ -84,12 +84,22 @@ func List(c *gin.Context) {
 			continue
 		}
 
+		icon := item.Icon
+		if icon == "" {
+			icon = "list"
+		}
+		icon_color := item.IconColor
+		name_color := item.NameColor
+
 		project := map[string]interface{}{
 			"name":       item.Name,
 			"id":         id,
 			"creator_id": creatorId,
 			"team_id":    teamId,
+			"icon":       icon,
 			"endpoints":  endpoints,
+			"icon_color": icon_color,
+			"name_color": name_color,
 		}
 		projects = append(projects, project)
 	}

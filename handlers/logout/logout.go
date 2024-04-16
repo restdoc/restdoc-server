@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"restdoc/config"
+	"restdoc/consts"
 	redispool "restdoc/internal/database/redis"
 	"restdoc/utils"
 )
@@ -16,7 +17,7 @@ func Logout(c *gin.Context) {
 	needJsonResponse := c.Request.Header.Get("json") == "true"
 	ts := time.Now().Unix()
 
-	_session_id, err := c.Request.Cookie("session_id")
+	_session_id, err := c.Request.Cookie(consts.CookieKey)
 	if err != nil {
 		if needJsonResponse {
 			c.JSON(http.StatusOK, gin.H{"ts": ts, "code": 1, "message": err.Error(), "data": gin.H{}})
@@ -46,7 +47,7 @@ func Logout(c *gin.Context) {
 	if err == nil {
 		httpOnly, secure := utils.GetCookieFlag(config.DefaultConfig.Debug, c)
 
-		c.SetCookie("session_id", "", 0, "/", "", secure, httpOnly)
+		c.SetCookie(consts.CookieKey, "", 1, "/", "", secure, httpOnly)
 	}
 
 	if needJsonResponse {

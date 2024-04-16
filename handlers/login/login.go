@@ -12,6 +12,7 @@ import (
 
 	Models "restdoc-models/models"
 	"restdoc/config"
+	"restdoc/consts"
 	redispool "restdoc/internal/database/redis"
 	"restdoc/utils"
 )
@@ -38,7 +39,7 @@ func Login(c *gin.Context) {
 	year := now.Format("2006")
 	ts := now.Unix()
 
-	if _session_id, err := c.Request.Cookie("session_id"); err == nil {
+	if _session_id, err := c.Request.Cookie(consts.CookieKey); err == nil {
 		session_id := _session_id.Value
 		session, err := redispool.GetSession(session_id)
 		if err == nil {
@@ -121,7 +122,7 @@ func Login(c *gin.Context) {
 			if err == nil {
 				httpOnly, secure := utils.GetCookieFlag(config.DefaultConfig.Debug, c)
 				c.SetSameSite(http.SameSiteLaxMode)
-				c.SetCookie("session_id", session_id.String(), 86400*7, "/", "", secure, httpOnly)
+				c.SetCookie(consts.CookieKey, session_id.String(), 86400*7, "/", "", secure, httpOnly)
 			} else {
 				c.JSON(http.StatusOK, gin.H{"ts": ts, "year": year, "error": err.Error(), "data": gin.H{}, "code": 1, "message": "设置session失败"})
 				return

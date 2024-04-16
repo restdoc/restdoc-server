@@ -101,12 +101,6 @@ func InitWithEnv() error {
 		timeout = int(5)
 	}
 
-	license := os.Getenv("RESTDOC_LICENSE") //saas domain
-	if license == "" {
-		err := errors.New("no license. Visit https://www.hedwi.com/license to get one.")
-		return err
-	}
-
 	saasDomain := os.Getenv("RESTDOC_DOMAIN") //saas domain
 
 	httpAddr := os.Getenv("RESTDOC_HTTP_ADDR")            //Addr

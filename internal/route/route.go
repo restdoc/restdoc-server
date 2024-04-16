@@ -91,6 +91,7 @@ func InitRouter() *gin.Engine {
 	r.HTMLRender = &render.Render
 
 	r.GET("/", home.Home)
+	r.HEAD("/", home.Home)
 	r.POST("/", home.Home)
 	r.GET("/login", login.LoginPage)
 	r.POST("/login", login.Login)

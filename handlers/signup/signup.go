@@ -19,6 +19,7 @@ import (
 
 	Models "restdoc-models/models"
 	"restdoc/config"
+	"restdoc/consts"
 	redispool "restdoc/internal/database/redis"
 	"restdoc/internal/database/snowflake"
 	"restdoc/third/geetest"
@@ -283,7 +284,7 @@ func SignUp(c *gin.Context) {
 		if err == nil {
 			httpOnly, secure := utils.GetCookieFlag(config.DefaultConfig.Debug, c)
 
-			c.SetCookie("session_id", session_id.String(), expire, "/", "", secure, httpOnly)
+			c.SetCookie(consts.CookieKey, session_id.String(), expire, "/", "", secure, httpOnly)
 
 			c.JSON(http.StatusOK, gin.H{"ts": ts, "code": 0, "message": "OK", "data": gin.H{}, "mailed": true})
 			return
