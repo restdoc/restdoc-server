@@ -19,5 +19,6 @@
 
    
    cp air.conf.example air.conf
+   
    air -c air.conf
 
