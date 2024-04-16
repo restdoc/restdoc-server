@@ -11,13 +11,11 @@ import (
 type Config struct {
 	Debug            bool
 	Timeout          int
-	SaaSDomain       string
-	SelfDomain       string
 	Count            int
 	Addr             string
 	CertDir          string
-	Mysql            SqlDB
-	Postgresql       SqlDB
+	SqlDB            string
+	SaaSDomain       string
 	DefaultExpire    int
 	SessionRedis     RedisInfo
 	CacheRedis       RedisInfo
@@ -40,7 +38,6 @@ type Config struct {
 	AliPay           AliPayInfo
 	GravatarUrl      string
 	AllowOrigin      string
-	Consul           ConsulInfo
 }
 
 type KVInfo struct {
@@ -105,9 +102,7 @@ func InitWithEnv() error {
 
 	httpAddr := os.Getenv("RESTDOC_HTTP_ADDR")            //Addr
 	certDir := os.Getenv("RESTDOC_CERT_DIR")              //CertDir
-	mysqlAddr := os.Getenv("RESTDOC_MYSQL")               //Mysql
-	postgresqlAddr := os.Getenv("RESTDOC_POSTGRESQL")     //postgresql
-	consulAddr := os.Getenv("RESTDOC_CONSUL")             //Consul
+	dbHost := os.Getenv("RESTDOC_SQLDB")                  //SqlDB
 	_defaultExpire := os.Getenv("RESTDOC_DEFAULT_EXPIRE") //DefaultExpire int
 	defaultExpire, err := strconv.Atoi(_defaultExpire)
 	if err != nil {
@@ -163,8 +158,7 @@ func InitWithEnv() error {
 		SaaSDomain:    saasDomain,
 		Addr:          httpAddr,
 		CertDir:       certDir,
-		Mysql:         SqlDB{Host: mysqlAddr},
-		Postgresql:    SqlDB{Host: postgresqlAddr},
+		SqlDB:         dbHost,
 		DefaultExpire: defaultExpire,
 		SessionRedis:  RedisInfo{Address: sessionHedisAddr, Password: sessionHedisPassword, DB: sessionHedisDB, PoolSize: sessionHedisPoolSize},
 		CacheRedis:    RedisInfo{Address: cacheHedisAddr, Password: cacheHedisPassword, DB: cacheHedisDB, PoolSize: cacheHedisPoolSize},
@@ -178,7 +172,6 @@ func InitWithEnv() error {
 		SupportUser:   supportUser,
 		AliPay:        AliPayInfo{AppId: alipayAppID, PublicKey: alipayPublicKey, PrivateKey: alipayPrivateKey},
 		AllowOrigin:   allowOrigin,
-		Consul:        ConsulInfo{Addr: consulAddr},
 	}
 	return nil
 }
@@ -190,8 +183,8 @@ func CheckConfig() error {
 		return err
 	}
 
-	if DefaultConfig.Mysql.Host == "" && DefaultConfig.Postgresql.Host == "" {
-		err = errors.New("RESTDOC_MYSQL and RESTDOC_POSTGRESQL are empty")
+	if DefaultConfig.SqlDB == "" {
+		err = errors.New("RESTDOC_SQLDB is empty")
 		return err
 	}
 

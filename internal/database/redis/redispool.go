@@ -7,8 +7,9 @@ import (
 	"github.com/go-redis/redis"
 	"github.com/golang/glog"
 
-	Models "restdoc-models/models"
 	"restdoc/config"
+
+	Models "github.com/restdoc/restdoc-models"
 )
 
 var CacheDb *redis.Client

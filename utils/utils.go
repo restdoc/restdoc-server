@@ -8,8 +8,9 @@ import (
 	"net"
 	"strings"
 
-	Models "restdoc-models/models"
 	"restdoc/config"
+
+	Models "github.com/restdoc/restdoc-models"
 )
 
 const DefaultColor = int32(4358125)

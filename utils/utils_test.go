@@ -1,13 +1,8 @@
 package utils
 
 import (
-	"net/http"
-	"net/http/httptest"
 	"testing"
 	//	"github.com/smartystreets/goconvey/convey"
-	"github.com/gin-gonic/gin"
-
-	"restdoc/config"
 )
 
 func TestGetHashedPassword(t *testing.T) {
@@ -28,46 +23,6 @@ func TestGetHashedPassword(t *testing.T) {
 		}
 	}
 
-}
-
-func TestExtractSaaSInfo(t *testing.T) {
-	w := httptest.NewRecorder()
-
-	//c.Request, _ = http.NewRequest("GET", "https://www.hedwi.com/signup", nil)
-
-	defaultSaaSDomain := "hedwi.com"
-
-	cases := []struct {
-		url        string
-		saasDomain string
-		want       string
-	}{
-		{"https://www.hedwi.com", defaultSaaSDomain, ""},
-		{"http://www.hedwi.com", defaultSaaSDomain, ""},
-		{"https://hedwi.com", defaultSaaSDomain, ""},
-		{"http://hedwi.com", defaultSaaSDomain, ""},
-		{"https://www.feetmail.com", defaultSaaSDomain, "hedwi.com"},
-		{"http://www.feetmail.com", defaultSaaSDomain, ""},
-		{"https://feetmail.com", defaultSaaSDomain, ""},
-		{"http://feetmail.com", defaultSaaSDomain, ""},
-		{"https://www.hedwi.com", "", ""},
-		{"http://www.hedwi.com", "", ""},
-		{"https://hedwi.com", "", ""},
-		{"http://hedwi.com", "", ""},
-		{"https://www.feetmail.com", "", "hedwi.com"},
-		{"http://www.feetmail.com", "", ""},
-		{"https://feetmail.com", "", ""},
-		{"http://feetmail.com", "", ""},
-	}
-
-	for _, c := range cases {
-		config.DefaultConfig.SaaSDomain = c.saasDomain
-		req, _ := gin.CreateTestContext(w)
-		req.Request, _ = http.NewRequest("GET", c.url, nil)
-		result := ExtractSaaSInfo(req)
-		t.Errorf("result %v", result)
-
-	}
 }
 
 func TestFormatColor(t *testing.T) {

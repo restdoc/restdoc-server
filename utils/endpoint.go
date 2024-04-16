@@ -1,9 +1,10 @@
 package utils
 
 import (
-	Models "restdoc-models/models"
 	"sort"
 	"strconv"
+
+	Models "github.com/restdoc/restdoc-models"
 
 	"github.com/ericlagergren/decimal"
 )

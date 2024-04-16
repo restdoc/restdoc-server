@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/golang/glog"
 
-	Models "restdoc-models/models"
+	Models "github.com/restdoc/restdoc-models"
 )
 
 func FormatSession(c *gin.Context) Models.Session {

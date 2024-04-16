@@ -5,7 +5,6 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	isd "github.com/jbenet/go-is-domain"
 
 	"restdoc/config"
 )
@@ -49,13 +48,6 @@ func ExtractSaaSInfo(c *gin.Context) SaaSInfo {
 
 	info := SaaSInfo{HostDomain: hostdomain, IsSaaS: isSaaSMode}
 	return info
-}
-
-func IsSaaS(domain string, host string) bool {
-	if !isd.IsDomain(host) {
-		return false
-	}
-	return domain == saasDomain
 }
 
 func GetCookieFlag(debug bool, c *gin.Context) (bool, bool) {

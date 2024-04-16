@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"strings"
 
-	Models "restdoc-models/models"
+	Models "github.com/restdoc/restdoc-models"
 )
 
 func CheckPermission(teamId int64, permittedTeamIds string) bool {

@@ -20,13 +20,14 @@ import (
 	// "github.com/getsentry/sentry-go"
 	"github.com/gin-gonic/gin"
 
-	Models "restdoc-models/models"
 	"restdoc/config"
 	redispool "restdoc/internal/database/redis"
 	"restdoc/internal/database/snowflake"
 	"restdoc/internal/middlewares"
 	"restdoc/internal/route"
 	"restdoc/logger"
+
+	Models "github.com/restdoc/restdoc-models"
 )
 
 //go:embed static
@@ -37,15 +38,6 @@ var static embed.FS
 
 func init() {
 
-	/*
-		        if err := sentry.Init(sentry.ClientOptions{
-		            Dsn: "https://022afd69e69b48f38eb6ecdf1ba44bf2@sty.hedwi.com/3",
-		        }); err != nil {
-		            fmt.Printf("Sentry initialization failed: %v\n", err)
-		        }
-
-				//defer sentry.Flush(2 * time.Second)
-	*/
 }
 
 func loadCerts(dir string) (*tls.Config, error) {
@@ -121,10 +113,9 @@ func main() {
 	}
 
 	modelConfig := Models.ModelConfig{
-		Debug:      config.DefaultConfig.Debug,
-		IsSaaS:     isSaaS,
-		Mysql:      config.DefaultConfig.Mysql.Host,
-		Postgresql: config.DefaultConfig.Postgresql.Host,
+		Debug:  config.DefaultConfig.Debug,
+		IsSaaS: isSaaS,
+		SqlDB:  config.DefaultConfig.SqlDB,
 	}
 
 	Models.Init(&modelConfig)
